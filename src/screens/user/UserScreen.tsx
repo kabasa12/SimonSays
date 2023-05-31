@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         maxWidth: 100,
     },
     txt: {
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: 'bold',
     }
 });

@@ -22,7 +22,8 @@ const saveResultAsync = createAsyncThunk(
 
       const existingIndex = parsedResults.findIndex((r) => r.playerName === result.playerName);
       if (existingIndex !== -1) {
-        parsedResults[existingIndex].score = result.score;
+        if (parsedResults[existingIndex].score < result.score)
+          parsedResults[existingIndex].score = result.score;
       } else {
         parsedResults.push(result);
       }
@@ -85,12 +86,15 @@ const addToSimonSequence =
     const colors = ['red', 'green', 'blue', 'yellow'];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     dispatch(addToSequence(randomColor));
+
+    soundUtils.preLoadSound(randomColor);
     const currSequence = selectSequence(getState())
 
     for (let i = 0; i < currSequence.length; i++) {
       const currenColor = currSequence[i];
       await delay(700);
       dispatch(setActiveButton(currenColor));
+
       soundUtils.playSound(currenColor);
       await delay(300)
       dispatch(setActiveButton(''));
@@ -120,12 +124,11 @@ const gameSlice = createSlice({
     },
     addToUserSequence(state, action) {
       state.userSequence = [...state.userSequence, action.payload]
-      console.log(state.userSequence)
+      //console.log(state.userSequence)
     },
     addToSequence(state, action) {
-      // console.log('slice addToSequence', action.payload)
       state.sequence = [...state.sequence, action.payload];
-      console.log(state.sequence);
+      //console.log(state.sequence);
     },
     clearSequence(state) {
       state.sequence = [];
