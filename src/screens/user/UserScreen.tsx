@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../store/hook';
 import { INavigationForScreen } from '../types';
 import { selectPlayerName, setPlayerName } from '../../store/gameSlice';

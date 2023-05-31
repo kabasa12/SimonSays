@@ -122,11 +122,11 @@ const gameSlice = createSlice({
     setStatus(state, action: PayloadAction<Status>) {
       state.status = action.payload
     },
-    addToUserSequence(state, action) {
+    addToUserSequence(state, action: PayloadAction<string>) {
       state.userSequence = [...state.userSequence, action.payload]
       //console.log(state.userSequence)
     },
-    addToSequence(state, action) {
+    addToSequence(state, action: PayloadAction<string>) {
       state.sequence = [...state.sequence, action.payload];
       //console.log(state.sequence);
     },
@@ -139,22 +139,22 @@ const gameSlice = createSlice({
     clearScore(state) {
       state.score = 0;
     },
-    setIsPlaying(state, action) {
+    setIsPlaying(state, action: PayloadAction<boolean>) {
       state.isPlaying = action.payload;
     },
     increaseScore(state) {
       state.score++;
     },
-    setResults(state, action) {
+    setResults(state, action: PayloadAction<Result>) {
       state.results = [...state.results, action.payload]
     },
     setPlayerName(state, action: PayloadAction<string>) {
       state.playerName = action.payload;
     },
-    setActiveButton(state, action) {
+    setActiveButton(state, action: PayloadAction<string>) {
       state.activeButton = action.payload;
     },
-    setIsFailed(state, action) {
+    setIsFailed(state, action: PayloadAction<boolean>) {
       state.isFailed = action.payload;
     }
   },
