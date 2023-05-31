@@ -1,31 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { useAppSelector } from '../../store/hook';
 import { selectResults } from '../../store/gameSlice';
 import { INavigationForScreen } from '../types';
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'black',
-    },
-    title: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        marginBottom: 20,
-        color: 'white'
-    },
-    resultsContainer: {
-        marginBottom: 20,
-    },
-    result: {
-        fontSize: 24,
-        marginBottom: 10,
-        color: 'white'
-    },
-});
+import styles from './resultsScreenStyles';
 
 const ResultsScreen = ({ navigation }: INavigationForScreen) => {
     const results = useAppSelector(selectResults);
